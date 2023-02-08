@@ -1,25 +1,22 @@
-import { useState } from "react";
-
 const Item = ({ item, cart, setCart }) => {
-  const [found, setFound] = useState(false);
+  const { name, image, price } = item;
+
   const addToCart = () => {
     let total = cart.total + item.price;
     let quantity = cart.quantity + 1;
-    setFound(false);
+    let found = cart.items.find((item) => item.item.name === name);
 
-    cart.items.map((singleItem) => {
-      if (singleItem.item.name === item.name) {
-        console.log(2);
-        singleItem.quantity += 1;
-        setFound(true);
-        setCart({ items: [...cart.items], total: total, quantity: quantity });
-        return item;
+    let newCart = cart.items.map((singleItem) => {
+      if (singleItem.item.name === name) {
+        let newQuantity = singleItem.quantity + 1;
+        return { ...singleItem, quantity: newQuantity };
       }
-      return item;
+      return singleItem;
     });
 
-    if (!found) {
-      console.log(1);
+    if (found) {
+      setCart({ items: newCart, total, quantity });
+    } else {
       setCart({
         items: [...cart.items, { item: item, quantity: 1 }],
         total: total,
@@ -27,12 +24,13 @@ const Item = ({ item, cart, setCart }) => {
       });
     }
   };
+
   return (
     <div className="single-item">
-      <img src={item.image} alt="not available" className="item-image" />
+      <img src={image} alt="not available" className="item-image" />
       <div className="item-details">
-        <h3>{item.name}</h3>
-        <p>$ {item.price}</p>
+        <h3>{name}</h3>
+        <p>$ {price}</p>
       </div>
       <div className="btn-container">
         <button className="add-btn" onClick={() => addToCart()}>

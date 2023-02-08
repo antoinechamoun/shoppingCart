@@ -16,13 +16,13 @@ function App() {
       price: 14,
     },
     {
-      name: "ORIGINAL FLAVOUR SLICES VEGAN CHEESE",
+      name: "ORIGINAL FLAVOUR SLICES VEGAN CHEDDAR CHEESE",
       image:
         "https://cdn.shopify.com/s/files/1/0463/5816/7716/products/350830021597047870_825x_crop_center.png?v=1603895609",
       price: 13,
     },
     {
-      name: "ORIGINAL FLAVOUR SLICES VEGAN CHEDDAR CHEESE",
+      name: "ORIGINAL FLAVOUR SLICES VEGAN Butter CHEESE",
       image:
         "https://cdn.shopify.com/s/files/1/0463/5816/7716/products/014340101595316366_825x_crop_center.png?v=1603889612",
       price: 14,
