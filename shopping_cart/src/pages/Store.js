@@ -1,7 +1,13 @@
-const Store = () => {
-    return(
-        <div>Store</div>
-    )
-}
+import Item from "../components/Item";
 
-export default Store
+const Store = ({ items, cart, setCart }) => {
+  return <div className="items-container">
+    {items.map((item, id)=>{
+        return(
+            <Item item={item} cart={cart} setCart={setCart} key={id}/>
+        )
+    })}
+  </div>;
+};
+
+export default Store;

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { BsCart3 } from "react-icons/bs";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
-const Head = () => {
+const Head = ({setShowCart, cart}) => {
   const storeRef = useRef();
   const aboutRef = useRef();
   const homeRef = useRef();
@@ -46,19 +46,19 @@ const Head = () => {
           </Link>
         </li>
         <li>
-          <Link className="links" ref={storeRef} to={"/store"}>
+          <Link className="links" onClick={(e) => handleClick(e)} ref={storeRef} to={"/store"}>
             Store
           </Link>
         </li>
         <li>
-          <Link className="links" ref={aboutRef} to={"/about"}>
+          <Link className="links" onClick={(e) => handleClick(e)} ref={aboutRef} to={"/about"}>
             About
           </Link>
         </li>
       </ul>
       <div className="cart-container">
-        <p className="cart-notification">19</p>
-        <BsCart3 className="shopping-icon" />
+        <p className="cart-notification">{cart.quantity}</p>
+        <BsCart3 className="shopping-icon" onClick={()=>setShowCart(true)}/>
       </div>
     </nav>
   );
