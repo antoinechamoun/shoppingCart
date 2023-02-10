@@ -3,9 +3,9 @@ const CartItem = ({ item, cart, setCart }) => {
 
   const handleQuantity = (e) => {
     e.stopPropagation();
+    let newQuantity;
+    let newPrice;
     if (e.currentTarget.textContent === "-") {
-      let newQuantity;
-      let newPrice;
       const newCart = cart.items.map((singleItem) => {
         if (singleItem.item.name === item.item.name) {
           newQuantity = singleItem.quantity - 1;
@@ -22,6 +22,21 @@ const CartItem = ({ item, cart, setCart }) => {
         quantity: cart.quantity - 1,
       });
     } else {
+      const newCart = cart.items.map((singleItem) => {
+        if (singleItem.item.name === item.item.name) {
+          newQuantity = singleItem.quantity + 1;
+          newPrice = singleItem.price;
+          return { ...singleItem, quantity: newQuantity };
+        } else {
+          return singleItem;
+        }
+      });
+
+      setCart({
+        items: newCart,
+        total: cart.total + newPrice,
+        quantity: cart.quantity + 1,
+      });
     }
   };
 

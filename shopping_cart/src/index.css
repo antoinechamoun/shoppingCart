@@ -251,18 +251,19 @@ code {
   cursor: pointer;
 }
 
-.cart-item-container {
+.cart-items-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  overflow: auto;
+  height: 600px;
 }
 
 .single-cart-item {
   display: flex;
   justify-content: left;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 30px 0;
 }
 
 .cart-image {
